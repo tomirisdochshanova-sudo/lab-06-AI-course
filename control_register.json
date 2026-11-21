@@ -1,0 +1,52 @@
+{
+  "harness_controls": [
+    "validate_input",
+    "blind",
+    "refuse",
+    "log",
+    "escalate"
+  ],
+  "format_problems": [],
+  "entries": [
+    {
+      "control": "validate_input",
+      "principle": "Robustness, security and safety",
+      "principle_source": "OECD Recommendation on AI, 2019, updated 2024, Section 1.4: https://oecd.ai/en/ai-principles",
+      "instrument": "Law of the Republic of Kazakhstan No. 94-V of 21 May 2013, On Personal Data and their Protection",
+      "provision": "Article 22 (protection of personal data): https://adilet.zan.kz/eng/docs/Z1300000094",
+      "why_here": "Input validation refuses impossible values before model processing; this is an additional technical safeguard, not a specific validation rule required by Article 22."
+    },
+    {
+      "control": "blind",
+      "principle": "Human rights and democratic values, including fairness and privacy",
+      "principle_source": "OECD Recommendation on AI, 2019, updated 2024, Section 1.2: https://oecd.ai/en/ai-principles",
+      "instrument": "Law of the Republic of Kazakhstan No. 94-V of 21 May 2013, On Personal Data and their Protection",
+      "provision": "Article 7(1) (conditions for personal data processing): https://adilet.zan.kz/eng/docs/Z1300000094",
+      "why_here": "Name language caused 2 flips, gender-coded names 4, and university 1 out of 40 pairs; none clearly exceeded its floor, but hiding names and universities limits unnecessary model exposure."
+    },
+    {
+      "control": "refuse",
+      "principle": "Robustness, security and safety",
+      "principle_source": "OECD Recommendation on AI, 2019, updated 2024, Section 1.4: https://oecd.ai/en/ai-principles",
+      "instrument": "Law of the Republic of Kazakhstan No. 94-V of 21 May 2013, On Personal Data and their Protection",
+      "provision": "Article 7(1) (consent and processing conditions, subject to legal exceptions): https://adilet.zan.kz/eng/docs/Z1300000094",
+      "why_here": "The refusal path stops requests without recorded consent or with an invalid purpose, while my additional prompt-injection rule protects screening integrity."
+    },
+    {
+      "control": "log",
+      "principle": "Accountability",
+      "principle_source": "OECD Recommendation on AI, 2019, updated 2024, Section 1.5: https://oecd.ai/en/ai-principles",
+      "instrument": "Law of the Republic of Kazakhstan No. 94-V of 21 May 2013, On Personal Data and their Protection",
+      "provision": "Article 22 (protection of personal data): https://adilet.zan.kz/eng/docs/Z1300000094",
+      "why_here": "The structured log records outcomes, reasons, controls and timestamps for audit; protecting any personal data in logs is important, although Article 22 does not prescribe this JSONL format."
+    },
+    {
+      "control": "escalate",
+      "principle": "Transparency and explainability",
+      "principle_source": "OECD Recommendation on AI, 2019, updated 2024, Section 1.3: https://oecd.ai/en/ai-principles",
+      "instrument": "Law of the Republic of Kazakhstan No. 94-V of 21 May 2013, On Personal Data and their Protection",
+      "provision": "Article 7(1) (lawful processing conditions): https://adilet.zan.kz/eng/docs/Z1300000094",
+      "why_here": "The original agent produced 4 gender-name flips and 2 language-name flips; human review adds oversight for uncertain decisions, but Article 7 does not itself require this escalation rule."
+    }
+  ]
+}
